@@ -114,12 +114,12 @@ int DumpMocks_VerifyDumpMemoryItem(uint32_t item, const void* pvMemory, CrashCat
     pItem = &g_pDumpMemoryItems[item];
 
     if (pItem->elementSize != elementSize)
-        return 0;
+        return FALSE;
     if (pItem->elementCount != elementCount)
-        return 0;
+        return FALSE;
     if (0 != memcmp(pItem->pvMemory, pvMemory, (size_t)elementSize * elementCount))
-        return 0;
-    return 1;
+        return FALSE;
+    return TRUE;
 }
 
 
